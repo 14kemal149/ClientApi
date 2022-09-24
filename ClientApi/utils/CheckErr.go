@@ -8,13 +8,11 @@ ClientApi uygulamasi icin basit bir hata yonetimi
 */
 
 import (
-	"fmt"
 	"log"
 )
 
 func CheckErr(err error) { //Basit bir hata yonetimi
 	if err != nil {
 		log.Fatal(err)
-		fmt.Println(err)
 	}
 }
