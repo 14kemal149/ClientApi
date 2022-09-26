@@ -73,7 +73,7 @@ func Saveuser(client models.Client) { //Yeni kaydolacak musteri icin data isleml
 
 	bytes, err := json.Marshal(clients)
 	fmt.Println(56)
-	//fmt.Println(string(bytes))
+	
 	CheckErr(err)
 
 	f, err := os.OpenFile("json/clients.json", os.O_WRONLY, 0600)
