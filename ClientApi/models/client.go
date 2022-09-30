@@ -9,6 +9,6 @@ ClientApi uygulamasi icin musteri modelinin belirlenmesi
 
 type Client struct {
 	ID        int    `json : "ID"`
-	firstname string `json : "Firstname"`
-	lastname  string `json : "Lastname"`
+	Firstname string `json : "Firstname"`
+	Lastname  string `json : "Lastname"`
 }
