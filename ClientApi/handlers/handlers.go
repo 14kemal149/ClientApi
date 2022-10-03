@@ -9,7 +9,6 @@ ClientApi uygulamasi icin handler islemleri
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -45,9 +44,7 @@ func Postclienthandler(w http.ResponseWriter, r *http.Request) { //yeni kaydolac
 	var client models.Client
 
 	err := json.NewDecoder(r.Body).Decode(&client)
-	fmt.Println(r.Body)
 
-	fmt.Println(22)
 	CheckErr(err)
 
 	client.ID = id
@@ -56,7 +53,6 @@ func Postclienthandler(w http.ResponseWriter, r *http.Request) { //yeni kaydolac
 	Saveuser(client)
 
 	data, err := json.Marshal(clients)
-	fmt.Println(43)
 
 	CheckErr(err)
 	w.Header().Set("Content-Type", "application/json")
