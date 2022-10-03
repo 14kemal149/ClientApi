@@ -72,7 +72,7 @@ func Saveuser(client models.Client) { //Yeni kaydolacak musteri icin data isleml
 
 }
 
-func ChangeJson(clients map[string]models.Client) {
+func ChangeJson(clients map[string]models.Client) {//Diger data islemlerinin sonunda json dosyasinda degisiklik icin
 	bytes, err := json.Marshal(clients)
 
 	CheckErr(err)
