@@ -36,15 +36,9 @@ func Deleteuser(id string) { //json dosyasindan musteri silinmesi
 
 	_ = Loadusers()
 
-	var client models.Client
+	delete(clients, id)
 
-	Id, _ := strconv.Atoi(id)
-
-	for _, client = range clients {
-		if client.ID == Id {
-			delete(clients, id)
-		}
-	}
+	ChangeJson(clients)
 	return
 }
 
@@ -59,6 +53,8 @@ func Updateuser(client models.Client, key string) { //json dosyasindaki bir must
 	} else {
 		fmt.Printf("Değer bulunamadı : %s", key)
 	}
+	ChangeJson(clients)
+
 	return
 }
 
@@ -71,18 +67,22 @@ func Saveuser(client models.Client) { //Yeni kaydolacak musteri icin data isleml
 
 	clients[stid] = client
 
+	ChangeJson(clients)
+	return
+
+}
+
+func ChangeJson(clients map[string]models.Client) {
 	bytes, err := json.Marshal(clients)
 	fmt.Println(56)
-	
+
 	CheckErr(err)
 
-	f, err := os.OpenFile("json/clients.json", os.O_WRONLY, 0600)
+	f, err := os.OpenFile("json/clients.json", os.O_WRONLY|os.O_TRUNC, 0600)
 	CheckErr(err)
 
 	defer f.Close()
 
 	_, err = f.Write(bytes)
 	CheckErr(err)
-	return
-
 }
